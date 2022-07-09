@@ -5,6 +5,7 @@ tasks:
       pip install -U pip
       pip install yapf
       pip install -r requirements.txt
+      sudo apt install libgl1-mesa-glx -y
       exit
 
 vscode:
