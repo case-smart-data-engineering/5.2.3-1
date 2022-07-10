@@ -24,7 +24,11 @@ CLASSES = ['person', 'bird', 'cat', 'cow', 'dog', 'horse', 'sheep',
 DATA_PATH = 'data/VOC2012'
 OUTPUT_PATH = 'data'
 OUTPUT_IMG_PATH = 'data/img'
+if not os.path.exists(OUTPUT_IMG_PATH):
+    os.makedirs(OUTPUT_IMG_PATH)
 OUTPUT_LABEL_PATH = 'data/label'
+if not os.path.exists(OUTPUT_LABEL_PATH):
+    os.makedirs(OUTPUT_LABEL_PATH)
 
 def convert(size, box):
     """
