@@ -9,7 +9,7 @@ import torch
 from torch.utils.data import DataLoader
 from torch.optim.lr_scheduler import LambdaLR
 from tqdm import tqdm
-import visdom
+#import visdom
 
 from dataset import VOCDataset
 from show_yolo import draw_img_with_bbox
@@ -85,8 +85,8 @@ def lr_lambda(ep):
 
 yolo_lr = LambdaLR(optim, lr_lambda=lr_lambda)
 
-print('开启可视化...')
-viz = visdom.Visdom()
+#print('开启可视化...')
+#viz = visdom.Visdom()
 
 # 开始训练
 print('============================================')
@@ -123,15 +123,15 @@ def train():
             loss.backward()
             optim.step()
 
-            viz.line(Y=train_loss,
-                    X=list(range(len(train_loss))),
-                    win='当前Loss',
-                    opts={'title': '训练Loss'})
-
-            viz.line(Y=avg_train_loss,
-                    X=list(range(len(avg_train_loss))),
-                    win='平均Loss',
-                    opts={'title': '平均Loss'})
+#            viz.line(Y=train_loss,
+#                    X=list(range(len(train_loss))),
+#                    win='当前Loss',
+#                    opts={'title': '训练Loss'})
+#
+#            viz.line(Y=avg_train_loss,
+#                    X=list(range(len(avg_train_loss))),
+#                    win='平均Loss',
+#                    opts={'title': '平均Loss'})
 
         yolo_lr.step()
 
@@ -162,12 +162,12 @@ def train():
             recall = tp / n
             precisions.append(precision)
             recalls.append(recall)
-            viz.line(test_loss, list(range(len(test_loss))),
-                    win='测试Loss', opts={'title': '测试Loss'})
-            viz.line(precisions, list(range(len(precisions))),
-                    win='准确率', opts={'title': '准确率'})
-            viz.line(recalls, list(range(len(recalls))),
-                    win='召回率', opts={'title': '召回率'})
+#            viz.line(test_loss, list(range(len(test_loss))),
+#                    win='测试Loss', opts={'title': '测试Loss'})
+#            viz.line(precisions, list(range(len(precisions))),
+#                    win='准确率', opts={'title': '准确率'})
+#            viz.line(recalls, list(range(len(recalls))),
+#                    win='召回率', opts={'title': '召回率'})
 
             torch.cuda.empty_cache()
 
