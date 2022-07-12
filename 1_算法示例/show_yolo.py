@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 import os
 import torch
-import visdom
+#import visdom
 from tqdm import tqdm
 from torchvision.transforms import transforms
 
@@ -88,9 +88,9 @@ def draw_img_with_bbox(yolo, show_range, save_path, start_index=0, save=False):
 
 
 if __name__ == '__main__':
-    viz = visdom.Visdom()
+#    viz = visdom.Visdom()
     yolo, _ = load_model(HISTORICAL_EPOCHS, device)
     pred_imgs, target_imgs = draw_img_with_bbox(yolo, 16,OUTPUT_IMG_PATH, save=True)
 
-    viz.images(pred_imgs, win='预测图片', opts={'title': '预测图片'})
-    viz.images(target_imgs, win='实际图片', opts={'title': '实际图片'})
+#    viz.images(pred_imgs, win='预测图片', opts={'title': '预测图片'})
+#    viz.images(target_imgs, win='实际图片', opts={'title': '实际图片'})
